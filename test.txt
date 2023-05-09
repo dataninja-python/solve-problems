@@ -1,0 +1,12 @@
+sites to use to learn:
+
+https://gobyexample.com/constants
+leetcode
+hackerank
+codesignal
+https://medium.com/@jeelrupapara/day-1-data-structure-and-algorithms-time-and-space-complexity-with-golang-a380d5914cc9
+
+
+
+
+
