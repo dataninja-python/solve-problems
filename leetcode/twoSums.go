@@ -10,44 +10,34 @@
 // packages
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // the function
-func twoSums(nums []int, target int) []int {
-	// Initialize a map to hold the result
-	resultArray := make(map[int]int)
-	// What is the value of the initial array
-	fmt.Println("The initial value of 'resultArray': ", resultArray)
-	// Check if the target is even
-	// If even this means, we need to find two odd numbers or two even numbers
-	// If odd this means, we need to find one odd number and one even number
-	targetIsEven := getIsEven(target)
-	// Initialize a variable to hold if the current number is even
-	var currentIsEven bool
-	fmt.Println("targetIsEven: ", targetIsEven)
+func twoSum(nums []int, target int) []int {
+	if len(nums) == 2 {
+		return []int{0, 1}
+	}
+	var diffMap = make(map[int]int)
 	for key, value := range nums {
-		currentIsEven = getIsEven(value)
-		fmt.Println("key: ", key, " value: ", value, " isEven: ", currentIsEven, "\n")
+		if key >= target {
+			continue
+		}
+		if index, ok := diffMap[target-value]; ok {
+			return []int{index, key}
+		}
+		diffMap[value] = key
 	}
 	return nil
 }
 
-// check if a number is odd
-// Number theory says that adding an even + even = even and odd + odd = even
-// 2 + 4 = 6; 4 + 6 = 10; 6 + 8 = 14;; 1 + 3 = 4; 3 + 5 = 8; 5 + 7 = 12;;
-// But, even + odd = odd or odd + even = odd
-func getIsEven(num int) bool {
-	if num%2 == 0 {
-		return true
-	}
-	return false
-}
-
 func main() {
 	// initialize the input array
-	inputArray := []int{2, 7, 11, 15}
+	inputArray := []int{3, 2, 7, 11, 59, 15, 17, 25}
 	// initialize the target
-	target := 9
+	target := 17
 	// call the function
-	_ = twoSums(inputArray, target)
+	result := twoSum(inputArray, target)
+	fmt.Println("result: ", result)
 }
